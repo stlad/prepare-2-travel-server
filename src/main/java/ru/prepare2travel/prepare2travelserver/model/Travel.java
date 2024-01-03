@@ -1,0 +1,41 @@
+package ru.prepare2travel.prepare2travelserver.model;
+
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Entity
+@Table(name = "travels")
+@Data @Builder
+@NoArgsConstructor @AllArgsConstructor
+public class Travel {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    private String country;
+
+    private String region;
+
+    private String city;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "day_id", referencedColumnName = "id")
+    private List<Day> days;
+
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "item_id", referencedColumnName = "id")
+    private List<Item> items;
+
+    private LocalDateTime creationDate;
+}
