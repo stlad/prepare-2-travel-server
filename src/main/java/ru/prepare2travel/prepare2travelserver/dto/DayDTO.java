@@ -1,28 +1,17 @@
-package ru.prepare2travel.prepare2travelserver.model;
+package ru.prepare2travel.prepare2travelserver.dto;
 
 
-import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "days")
-@Data @Builder
+@Data
 @NoArgsConstructor @AllArgsConstructor
 @EqualsAndHashCode
-public class Day {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class DayDTO {
     private Long id;
-
     private LocalDateTime date;
-
     private Double temperature;
-
     private Integer precipitationChance;
-
     private String interesting;
 }

@@ -2,10 +2,7 @@ package ru.prepare2travel.prepare2travelserver.model;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -16,6 +13,7 @@ import java.util.List;
 @Table(name = "travels")
 @Data @Builder
 @NoArgsConstructor @AllArgsConstructor
+@EqualsAndHashCode
 public class Travel {
 
     @Id
