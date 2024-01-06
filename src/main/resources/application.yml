@@ -19,6 +19,12 @@ spring:
     ansi:
       enabled : always
 
+
+command-line-runner:
+  data-loading:
+    travels:
+      enabled : true
+
 springdoc:
   show-actuator: false
   swagger-ui:
