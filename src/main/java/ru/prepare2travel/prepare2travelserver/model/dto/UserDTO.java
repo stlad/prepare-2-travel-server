@@ -1,4 +1,4 @@
-package ru.prepare2travel.prepare2travelserver.dto;
+package ru.prepare2travel.prepare2travelserver.model.dto;
 
 
 import lombok.*;

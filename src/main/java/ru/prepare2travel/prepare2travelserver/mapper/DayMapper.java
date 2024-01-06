@@ -1,10 +1,8 @@
 package ru.prepare2travel.prepare2travelserver.mapper;
 
 import org.mapstruct.Mapper;
-import ru.prepare2travel.prepare2travelserver.dto.DayDTO;
-import ru.prepare2travel.prepare2travelserver.dto.ItemDTO;
+import ru.prepare2travel.prepare2travelserver.model.dto.DayDTO;
 import ru.prepare2travel.prepare2travelserver.model.Day;
-import ru.prepare2travel.prepare2travelserver.model.Item;
 
 import java.util.List;
 

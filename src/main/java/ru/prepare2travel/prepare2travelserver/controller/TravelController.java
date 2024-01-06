@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.prepare2travel.prepare2travelserver.dto.TravelDTO;
+import ru.prepare2travel.prepare2travelserver.model.dto.TravelDTO;
 import ru.prepare2travel.prepare2travelserver.service.TravelService;
 
 import java.util.List;
@@ -26,13 +26,15 @@ public class TravelController {
 
     @GetMapping("/{id}")
     public ResponseEntity<TravelDTO> get(@PathVariable(value = "id") Long id) {
+        log.info("GET to /travels/{id}");
         TravelDTO dto = travelService.findById(id);
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 
 
     @GetMapping("/all")
-    public ResponseEntity<List<TravelDTO>> getAll(@PathVariable(value = "id") Long id) {
+    public ResponseEntity<List<TravelDTO>> getAll() {
+        log.info("GET to /travels/all");
         List<TravelDTO> dto = travelService.findAll();
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
