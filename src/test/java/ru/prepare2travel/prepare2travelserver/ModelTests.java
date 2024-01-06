@@ -26,51 +26,6 @@ public class ModelTests {
     @Autowired
     private DayRepository dayRepository;
 
-    @Test
-    @Disabled
-    void test(){
-        Day d1 = Day.builder().id(1L).build();
-        Day d2 = Day.builder().id(2L).build();
-        d1 = dayRepository.save(d1);
-        d2 = dayRepository.save(d2);
 
-        Item item1 = Item.builder().id(1L).build();
-        Item item2 = Item.builder().id(2L).build();
-        Item item3 = Item.builder().id(3L).build();
-        item1 = itemRepository.save(item1);
-        item2 = itemRepository.save(item2);
-        item3 = itemRepository.save(item3);
 
-        Travel travel = new Travel();
-        travel.setId(1L);
-        travel.setItems(List.of(item1,item2,item3));
-        travel.setDays(List.of(d1,d2));
-        travelRepository.save(travel);
-
-    }
-
-    @Test
-    void testasd(){
-        Day d1 = Day.builder().id(1L).build();
-        Day d2 = Day.builder().id(2L).build();
-
-        Item item1 = Item.builder().id(1L).build();
-        Item item2 = Item.builder().id(2L).build();
-        Item item3 = Item.builder().id(3L).build();
-
-        Travel travel = new Travel();
-        travel.setId(1L);
-        travel.setItems(List.of(item1,item2,item3));
-        travel.setDays(List.of(d1,d2));
-        travelRepository.save(travel);
-
-    }
-
-    @Test
-    void a(){
-        Travel t = travelRepository.findById(1L).orElseThrow(EntityNotFoundException::new);
-        t.getDays().remove(0);
-        t = travelRepository.save(t);
-        Assertions.assertTrue(true);
-    }
 }
