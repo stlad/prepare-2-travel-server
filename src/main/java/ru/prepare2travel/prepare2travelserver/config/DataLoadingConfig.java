@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Configuration;
 import ru.prepare2travel.prepare2travelserver.model.Day;
 import ru.prepare2travel.prepare2travelserver.model.Item;
 import ru.prepare2travel.prepare2travelserver.model.Travel;
+import ru.prepare2travel.prepare2travelserver.model.TravelPreset;
+import ru.prepare2travel.prepare2travelserver.repository.TravelPresetRepository;
 import ru.prepare2travel.prepare2travelserver.repository.TravelRepository;
 import ru.prepare2travel.prepare2travelserver.service.TravelService;
 
@@ -17,7 +19,10 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static ru.prepare2travel.prepare2travelserver.config.DataGenerator.getCyclingPreset;
 
 @Configuration
 @Slf4j
@@ -27,14 +32,14 @@ public class DataLoadingConfig {
     private TravelRepository travelRepository;
 
     @ConditionalOnProperty(
-            prefix = "command-line-runner.data-loading.catalog",
+            prefix = "command-line-runner.data-loading.travels",
             value = "enabled",
             havingValue = "true",
-            matchIfMissing = true)
+            matchIfMissing = false)
     @Bean
     public CommandLineRunner dataLoader(TravelRepository travelRepository) {
         return args -> {
-           log.info("Loading Test Travels");
+           log.info("Loading Test Travels ...");
 
             Day d1 = Day.builder().id(1L).build();
             Day d2 = Day.builder().id(2L).build();
@@ -63,7 +68,25 @@ public class DataLoadingConfig {
 
             travelRepository.save(travel1);
             travelRepository.save(travel2);
-            log.info("Test Travels loaded");
+            log.info("Loading Test Travels completed");
+        };
+    }
+
+
+    @ConditionalOnProperty(
+            prefix = "command-line-runner.data-loading.presets",
+            value = "enabled",
+            havingValue = "true",
+            matchIfMissing = true)
+    @Bean
+    public CommandLineRunner presetDataLoader(TravelPresetRepository presetRepository) {
+        return args -> {
+            log.info("Loading Travel Presets ...");
+            TravelPreset cyclingPreset = getCyclingPreset();
+            presetRepository.save(cyclingPreset);
+
+
+            log.info("Loading Travel Presets completed");
         };
     }
 
