@@ -20,9 +20,13 @@ public class Day {
 
     private LocalDateTime date;
 
-    private Double temperature;
+    private Double minTemperature;
 
-    private Integer precipitationChance;
+    private Double maxTemperature;
+
+    private Double humidity;
+
+    private Integer precipitation;
 
     private String interesting;
 }

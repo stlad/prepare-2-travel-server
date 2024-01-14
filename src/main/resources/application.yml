@@ -23,7 +23,9 @@ spring:
 command-line-runner:
   data-loading:
     travels:
-      enabled : true
+      enabled : false
+    presets:
+      enabled: true
 
 springdoc:
   show-actuator: false

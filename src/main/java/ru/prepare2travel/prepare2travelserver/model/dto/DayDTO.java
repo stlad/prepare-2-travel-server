@@ -12,6 +12,8 @@ public class DayDTO {
     private Long id;
     private LocalDateTime date;
     private Double temperature;
-    private Integer precipitationChance;
+    private Integer precipitation;
     private String interesting;
+    private Double minTemperature;
+    private Double maxTemperature;
 }
