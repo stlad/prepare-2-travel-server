@@ -1,12 +1,23 @@
 package ru.prepare2travel.prepare2travelserver.model.dto;
 
 
+import jakarta.persistence.ElementCollection;
 import lombok.*;
+import ru.prepare2travel.prepare2travelserver.model.User;
 
-@Data
+import javax.management.relation.Role;
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Data @Builder
 @NoArgsConstructor @AllArgsConstructor
 @EqualsAndHashCode
 public class UserDTO {
     private Long id;
     private String sex;
+    private String username;
+    private String password;
+    private LocalDateTime registeredAt;
+
+    private List<String> roles;
 }
