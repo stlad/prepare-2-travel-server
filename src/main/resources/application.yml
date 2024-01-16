@@ -25,7 +25,9 @@ command-line-runner:
     travels:
       enabled : false
     presets:
-      enabled: true
+      enabled : true
+    test-users:
+      enabled : true
 
 springdoc:
   show-actuator: false

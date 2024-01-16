@@ -29,9 +29,11 @@ public class User implements UserDetails {
 
     private String username;
     private String password;
+    private String email;
     private LocalDateTime registeredAt;
 
     @ElementCollection
+    @Enumerated(value = EnumType.STRING)
     private List<Role> roles;
 
     @Override

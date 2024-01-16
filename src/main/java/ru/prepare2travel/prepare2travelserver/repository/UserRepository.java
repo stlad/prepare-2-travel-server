@@ -6,4 +6,6 @@ import ru.prepare2travel.prepare2travelserver.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
+
+    public User findByUsername(String username);
 }

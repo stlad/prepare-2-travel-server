@@ -8,6 +8,7 @@ import ru.prepare2travel.prepare2travelserver.model.Day;
 import ru.prepare2travel.prepare2travelserver.model.Item;
 import ru.prepare2travel.prepare2travelserver.model.Travel;
 import ru.prepare2travel.prepare2travelserver.model.TravelPreset;
+import ru.prepare2travel.prepare2travelserver.model.dto.UserDTO;
 import ru.prepare2travel.prepare2travelserver.repository.TravelPresetRepository;
 import ru.prepare2travel.prepare2travelserver.repository.TravelRepository;
 import ru.prepare2travel.prepare2travelserver.service.TravelService;
@@ -18,6 +19,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import ru.prepare2travel.prepare2travelserver.service.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,6 +89,25 @@ public class DataLoadingConfig {
 
 
             log.info("Loading Travel Presets completed");
+        };
+    }
+
+    @ConditionalOnProperty(
+            prefix = "command-line-runner.data-loading.test-users",
+            value = "enabled",
+            havingValue = "true",
+            matchIfMissing = true)
+    @Bean
+    public CommandLineRunner testUserLoader(UserService userService) {
+        return args -> {
+            log.info("Loading Test Users ...");
+            UserDTO testUser = UserDTO.builder()
+                    .username("test")
+                    .password("test")
+                    .email("test@test.com")
+                    .build();
+            userService.save(testUser);
+            log.info("Loading Test Users completed");
         };
     }
 
