@@ -11,9 +11,9 @@ import java.time.LocalDateTime;
 public class DayDTO {
     private Long id;
     private LocalDateTime date;
-    private Double temperature;
-    private Integer precipitation;
-    private String interesting;
     private Double minTemperature;
     private Double maxTemperature;
+    private Double humidity;
+    private Integer precipitation;
+    private String interesting;
 }

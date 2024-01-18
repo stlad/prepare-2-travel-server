@@ -17,4 +17,5 @@ public class TravelDTO {
     private List<DayDTO> days;
     private List<ItemDTO> items;
     private LocalDateTime creationDate;
+    private Long ownerId;
 }

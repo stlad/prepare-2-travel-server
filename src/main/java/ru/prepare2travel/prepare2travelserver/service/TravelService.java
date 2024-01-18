@@ -43,4 +43,8 @@ public class TravelService {
                 new EntityNotFoundException("Cannot find entity with id: "+id));
         return travelMapper.toDto(travel);
     }
+
+    public List<TravelDTO> findByOwnerId(Long ownerId){
+        return travelMapper.toDto(travelRepository.findByOwnerId(ownerId));
+    }
 }

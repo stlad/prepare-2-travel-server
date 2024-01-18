@@ -34,4 +34,6 @@ public class Travel {
     private List<Item> items;
 
     private LocalDateTime creationDate;
+
+    private Long ownerId;
 }

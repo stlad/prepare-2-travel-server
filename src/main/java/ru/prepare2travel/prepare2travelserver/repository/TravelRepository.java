@@ -4,6 +4,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import ru.prepare2travel.prepare2travelserver.model.Travel;
 
+import java.util.List;
+
 @Repository
 public interface TravelRepository extends JpaRepository<Travel, Long> {
+
+    public List<Travel> findByOwnerId(Long ownerId);
 }

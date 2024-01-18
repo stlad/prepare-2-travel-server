@@ -29,6 +29,13 @@ public class TravelController {
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 
+    @GetMapping("/user/{ownerId}")
+    public ResponseEntity<List<TravelDTO>> getByUser(@PathVariable(value = "ownerId") Long ownerId) {
+        log.info("GET to /travels/user/{id}");
+        List<TravelDTO> dtos = travelService.findByOwnerId(ownerId);
+        return new ResponseEntity<>(dtos, HttpStatus.OK);
+    }
+
     @GetMapping("/all")
     public ResponseEntity<List<TravelDTO>> getAll() {
         log.info("GET to /travels/all");
@@ -42,4 +49,6 @@ public class TravelController {
         travelDTO = travelService.saveTravel(travelDTO);
         return new ResponseEntity<>(travelDTO, HttpStatus.OK);
     }
+
+
 }

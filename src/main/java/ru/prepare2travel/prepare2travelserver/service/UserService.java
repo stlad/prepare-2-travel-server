@@ -27,7 +27,7 @@ public class UserService implements UserDetailsService {
     private UserMapper userMapper;
 
     public UserDTO save(UserDTO dto){
-        if(userRepository.findByUsername(dto.getUsername()) == null){
+        if(userRepository.findByUsername(dto.getUsername()).isEmpty()){
             User user = userMapper.fromDto(dto);
             user.setPassword(passwordEncoder.encode(dto.getPassword()));
             user.setRegisteredAt(LocalDateTime.now());
@@ -48,9 +48,13 @@ public class UserService implements UserDetailsService {
         return userMapper.toDto(user);
     }
 
+    public UserDTO getUserByUsername(String username){
+        User user = userRepository.findByUsername(username).orElseThrow(()-> new UsernameNotFoundException("User with username "+username+" not found"));
+        return userMapper.toDto(user);
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByUsername(username);
+        return userRepository.findByUsername(username).orElseThrow(()-> new UsernameNotFoundException("User with username "+username+" not found"));
     }
 }
