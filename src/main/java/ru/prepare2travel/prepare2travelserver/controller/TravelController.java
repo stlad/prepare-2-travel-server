@@ -43,12 +43,11 @@ public class TravelController {
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 
-    @PostMapping("/")
-    public ResponseEntity<TravelDTO> saveTravel(@RequestBody TravelDTO travelDTO){
+    @PostMapping("/{userId}")
+    public ResponseEntity<TravelDTO> saveTravel(@PathVariable(value = "ownerId") Long ownerId, @RequestBody TravelDTO travelDTO){
         log.info("POST to /travels/");
+        travelDTO.setOwnerId(ownerId);
         travelDTO = travelService.saveTravel(travelDTO);
         return new ResponseEntity<>(travelDTO, HttpStatus.OK);
     }
-
-
 }
