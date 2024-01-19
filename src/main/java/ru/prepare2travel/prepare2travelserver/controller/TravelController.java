@@ -50,4 +50,11 @@ public class TravelController {
         travelDTO = travelService.saveTravel(travelDTO);
         return new ResponseEntity<>(travelDTO, HttpStatus.OK);
     }
+
+    @DeleteMapping("/{travelId}")
+    public ResponseEntity<TravelDTO> deleteTravel(@PathVariable(value = "travelId") Long travelId){
+        log.info("DELETE to /travels/{travelId}");
+        travelService.deleteById(travelId);
+        return new ResponseEntity<>(null, HttpStatus.OK);
+    }
 }

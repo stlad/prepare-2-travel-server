@@ -47,4 +47,8 @@ public class TravelService {
     public List<TravelDTO> findByOwnerId(Long ownerId){
         return travelMapper.toDto(travelRepository.findByOwnerId(ownerId));
     }
+
+    public void deleteById(Long id){
+        travelRepository.deleteById(id);
+    }
 }
