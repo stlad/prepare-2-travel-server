@@ -24,14 +24,14 @@ public class TravelController {
 
     @GetMapping("/{id}")
     public ResponseEntity<TravelDTO> get(@PathVariable(value = "id") Long id) {
-        log.info("GET to /travels/{id}");
+        log.info("GET to /travels/"+id);
         TravelDTO dto = travelService.findById(id);
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 
     @GetMapping("/user/{ownerId}")
     public ResponseEntity<List<TravelDTO>> getByUser(@PathVariable(value = "ownerId") Long ownerId) {
-        log.info("GET to /travels/user/{id}");
+        log.info("GET to /travels/user/"+ownerId);
         List<TravelDTO> dtos = travelService.findByOwnerId(ownerId);
         return new ResponseEntity<>(dtos, HttpStatus.OK);
     }
@@ -45,7 +45,7 @@ public class TravelController {
 
     @PostMapping("/{ownerId}")
     public ResponseEntity<TravelDTO> saveTravel(@PathVariable(value = "ownerId") Long ownerId, @RequestBody TravelDTO travelDTO){
-        log.info("POST to /travels/");
+        log.info("POST to /travels/"+ownerId);
         travelDTO.setOwnerId(ownerId);
         travelDTO = travelService.saveTravel(travelDTO);
         return new ResponseEntity<>(travelDTO, HttpStatus.OK);
@@ -53,7 +53,7 @@ public class TravelController {
 
     @DeleteMapping("/{travelId}")
     public ResponseEntity<TravelDTO> deleteTravel(@PathVariable(value = "travelId") Long travelId){
-        log.info("DELETE to /travels/{travelId}");
+        log.info("DELETE to /travels/"+travelId);
         travelService.deleteById(travelId);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
