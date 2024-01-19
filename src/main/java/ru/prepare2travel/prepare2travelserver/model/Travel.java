@@ -33,7 +33,7 @@ public class Travel {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Item> items;
 
-    private LocalDateTime creationDate;
+    private Long creationDate;
 
     private Long ownerId;
 }

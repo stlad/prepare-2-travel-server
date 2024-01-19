@@ -18,7 +18,7 @@ public class Day {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private LocalDateTime date;
+    private Long date;
 
     private Double minTemperature;
 

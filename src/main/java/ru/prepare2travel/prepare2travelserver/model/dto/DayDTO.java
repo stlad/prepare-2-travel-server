@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 public class DayDTO {
     private Long id;
-    private LocalDateTime date;
+    private Long date;
     private Double minTemperature;
     private Double maxTemperature;
     private Double humidity;

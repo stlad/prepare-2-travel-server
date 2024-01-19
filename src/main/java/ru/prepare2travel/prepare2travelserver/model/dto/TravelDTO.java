@@ -16,6 +16,6 @@ public class TravelDTO {
     private String city;
     private List<DayDTO> days;
     private List<ItemDTO> items;
-    private LocalDateTime creationDate;
+    private Long creationDate;
     private Long ownerId;
 }
